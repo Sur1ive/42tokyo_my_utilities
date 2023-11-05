@@ -6,11 +6,11 @@
 /*   By: yxu <yxu@student.42tokyo.jp>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:44:11 by yxu               #+#    #+#             */
-/*   Updated: 2023/10/04 13:01:08 by yxu              ###   ########.fr       */
+/*   Updated: 2023/11/05 18:11:35 by yxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static void	ft_write_num(long int num, char *base, int n)
 {

@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yxu <yxu@student.42tokyo.jp>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 13:03:12 by yxu               #+#    #+#             */
-/*   Updated: 2023/10/04 11:43:28 by yxu              ###   ########.fr       */
+/*   Created: 2023/10/04 12:53:04 by yxu               #+#    #+#             */
+/*   Updated: 2023/11/05 18:11:37 by yxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_putp(void *p)
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(char *str)
-{
-	int	n;
-
-	n = 0;
-	if (!str)
-		n += ft_putstr("(null)");
-	else
-		while (str[n] != '\0')
-			write(1, &str[n++], 1);
-	return (n);
+	write(1, "0x", 2);
+	if (((unsigned long)p) / 16 == 0)
+		return (2 + ft_putulnbr_base(((unsigned long)p) % 16,
+				"0123456789abcdef"));
+	return (2 + ft_putulnbr_base(((unsigned long)p) / 16, "0123456789abcdef")
+		+ ft_putnbr_base(((unsigned long)p) % 16, "0123456789abcdef"));
 }
