@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yxu <yxu@student.42tokyo.jp>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 17:44:44 by yxu               #+#    #+#             */
-/*   Updated: 2023/12/13 15:53:47 by yxu              ###   ########.fr       */
+/*   Created: 2023/12/12 16:12:31 by yxu               #+#    #+#             */
+/*   Updated: 2023/12/12 22:29:20 by yxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <string.h>
-#include "libft.h"
+#include "so_long.h"
 
-#include <libc.h>
-__attribute__((destructor))
-static void	destructor(void)
+int	create_trgb(int t, int r, int g, int b)
 {
-	system("leaks -q a.out");
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	main()
+int	get_t(int trgb)
 {
-	ft_printf("%d\n", ft_atoi("1"));
+	return ((trgb >> 24) & 0xFF);
+}
+
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
+
+int	get_g(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
+
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }
